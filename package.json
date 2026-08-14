@@ -1,0 +1,51 @@
+{
+  "name": "dogrula-js",
+  "version": "0.1.0",
+  "description": "JavaScript ve TypeScript için hafif ve genişletilebilir bir doğrulama kütüphanesi.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rmdir /s /q dist 2>nul || exit 0",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "validation",
+    "validator",
+    "tckn",
+    "tc-kimlik",
+    "vkn",
+    "vergi-kimlik",
+    "turkey",
+    "turkish",
+    "javascript",
+    "typescript"
+  ],
+  "author": {
+    "name": "emrullahctrl",
+    "email": "emrullah@vuhuv.com",
+    "url": "https://github.com/emrullahctrl"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emrullahctrl/dogrula-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emrullahctrl/dogrula-js/issues"
+  },
+  "homepage": "https://github.com/emrullahctrl/dogrula-js#readme",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
