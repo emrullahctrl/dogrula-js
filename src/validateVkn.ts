@@ -8,7 +8,6 @@ export default function validateVkn(value: string): ValidationResult {
             valid: false,
             code: "INVALID_TYPE",
             expected_type: "string",
-            text: "Beklenen vkn verisi alınan vkn verisi ile uyuşmadı."
         }
     }
 
@@ -18,7 +17,6 @@ export default function validateVkn(value: string): ValidationResult {
         return {
             valid: false,
             code: "EMPTY_VALUE",
-            text: "Alınan veri boş olamaz."
         }
     }
 
@@ -26,7 +24,6 @@ export default function validateVkn(value: string): ValidationResult {
         return {
             valid: false,
             code: "INVALID_CHARACTERS",
-            text: "Alınan vkn verisinin içeriği sadece rakam içermelidir."
         }
     }
 
@@ -34,7 +31,6 @@ export default function validateVkn(value: string): ValidationResult {
         return {
             valid: false,
             code: "INVALID_LENGTH",
-            text: "Alınan vkn verisi 10 haneli olmak zorundadır."
         }
     }
 
@@ -56,14 +52,12 @@ export default function validateVkn(value: string): ValidationResult {
     if (digits[9] !== checkDigit) {
         return {
             valid: false,
-            code: "INVALID_CHECK_DIGIT",
-            text: "10. hane doğrulaması başarısız."
+            code: "INVALID_CHECKSUM",
         }
     }
 
     return {
         valid: true,
         code: "VALID",
-        text: "Vkn doğrulandı."
     }
 }

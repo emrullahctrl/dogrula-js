@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsc",
     "clean": "rmdir /s /q dist 2>nul || exit 0",
-    "prepublishOnly": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build",
+    "dev": "tsx test.ts"
   },
   "keywords": [
     "validation",
@@ -46,6 +47,7 @@
   },
   "homepage": "https://github.com/emrullahctrl/dogrula-js#readme",
   "devDependencies": {
+    "tsx": "^4.23.12",
     "typescript": "^5.9.2"
   }
 }

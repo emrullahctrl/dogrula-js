@@ -8,7 +8,6 @@ export default function validateTCKN(value: string): ValidationResult {
             valid: false,
             code: "INVALID_TYPE",
             expected_type: "string",
-            text: "Beklenen tckn verisi alınan tckn verisi ile uyuşmadı."
         }
     }
     const tckn = value.trim();
@@ -17,7 +16,6 @@ export default function validateTCKN(value: string): ValidationResult {
         return {
             valid: false,
             code: "EMPTY_VALUE",
-            text: "Alınan veri boş olamaz."
         }
     }
 
@@ -25,7 +23,6 @@ export default function validateTCKN(value: string): ValidationResult {
         return {
             valid: false,
             code: "INVALID_CHARACTERS",
-            text: "Alınan tckn verisinin içeriği sadece rakam içermelidir."
         }
     }
 
@@ -33,7 +30,6 @@ export default function validateTCKN(value: string): ValidationResult {
         return {
             valid: false,
             code: "INVALID_LENGTH",
-            text: "Alınan tckn verisi 11 haneli olmak zorundadır."
         }
     }
 
@@ -41,7 +37,6 @@ export default function validateTCKN(value: string): ValidationResult {
         return {
             valid: false,
             code: "INVALID_FIRST_DIGIT",
-            text: "Alınan tckn verisinin 1. hanesi 0 olamaz."
         }
     }
 
@@ -60,22 +55,19 @@ export default function validateTCKN(value: string): ValidationResult {
     if (expectedTenthDigit !== digits[9]) {
         return {
             valid: false,
-            code: "INVALID_CHECK_DIGIT",
-            text: "10. hane doğrulaması başarısız."
+            code: "INVALID_CHECKSUM",
         }
     }
 
     if (expectedEleventhDigit !== digits[10]) {
         return {
             valid: false,
-            code: "INVALID_CHECK_DIGIT",
-            text: "11. hane doğrulaması başarısız."
+            code: "INVALID_CHECKSUM",
         }
     }
 
     return {
         valid: true,
         code: "VALID",
-        text: "Tckn kontrolü başarılı."
     }
 }
