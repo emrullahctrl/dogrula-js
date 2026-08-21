@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # dogrula-js
 
 [![npm version](https://img.shields.io/npm/v/dogrula-js.svg)](https://www.npmjs.com/package/dogrula-js)
@@ -170,4 +169,3 @@ Kütüphane TypeScript ile geliştirilmiştir ve tip tanımlarıyla birlikte gel
 
 ## Lisans
 MIT
->>>>>>> 3115035 (doğrulama sonuçları ve hata kodları global kapsamdan çıkarıldı. algoritma hata kodları detaylandırıldı. otomatik testler eklendi. iban doğrulamasında rezerv hane hatası düzeltildi.)
