@@ -1,4 +1,19 @@
-import { ValidationResult } from "./types.js";
+type VKNErrorCode =
+    | "INVALID_TYPE"
+    | "EMPTY_VALUE"
+    | "INVALID_CHARACTERS"
+    | "INVALID_LENGTH"
+    | "INVALID_CHECKSUM"
+
+type ValidationResult =
+    | {
+        valid: true
+    }
+    | {
+        valid: false,
+        code: VKNErrorCode,
+        expected_type?: "string"
+    }
 
 export default function validateVkn(value: string): ValidationResult {
     const digitsOnlyRegex = /^[0-9]+$/;
@@ -57,7 +72,6 @@ export default function validateVkn(value: string): ValidationResult {
     }
 
     return {
-        valid: true,
-        code: "VALID",
+        valid: true
     }
 }

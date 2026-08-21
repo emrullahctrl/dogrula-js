@@ -1,5 +1,20 @@
-import { ValidationResult } from "./types.js";
-
+type IBANErrorCode =
+    | "INVALID_TYPE"
+    | "EMPTY_VALUE"
+    | "INVALID_LENGTH"
+    | "INVALID_COUNTRY"
+    | "INVALID_FORMAT"
+    | "INVALID_CHARACTERS"
+    | "INVALID_CHECKSUM";
+type ValidationResult =
+    | {
+        valid: true
+    }
+    | {
+        valid: false,
+        code: IBANErrorCode,
+        expected_type?: "string"
+    }
 export default function validateIBAN(value: string): ValidationResult {
     const digitsOnlyRegex = /^[0-9]+$/;
 
@@ -36,7 +51,7 @@ export default function validateIBAN(value: string): ValidationResult {
         }
     }
 
-    if (iban[8] !== "0") {
+    if (iban[9] !== "0") {
         return {
             valid: false,
             code: "INVALID_FORMAT"
@@ -66,6 +81,5 @@ export default function validateIBAN(value: string): ValidationResult {
 
     return {
         valid: true,
-        code: "VALID"
     }
 }

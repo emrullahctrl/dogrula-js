@@ -1,6 +1,6 @@
 {
   "name": "dogrula-js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "JavaScript ve TypeScript için hafif ve genişletilebilir bir doğrulama kütüphanesi.",
   "type": "module",
   "main": "./dist/index.js",
@@ -16,9 +16,10 @@
   ],
   "scripts": {
     "build": "tsc",
-    "clean": "rmdir /s /q dist 2>nul || exit 0",
-    "prepublishOnly": "npm run clean && npm run build",
-    "dev": "tsx test.ts"
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
+    "prepublishOnly": "npm test && npm run clean && npm run build",
+    "dev": "tsx test.ts",
+    "test": "vitest run"
   },
   "keywords": [
     "validation",
@@ -29,8 +30,11 @@
     "vergi-kimlik",
     "turkey",
     "turkish",
+    "turkish-validation",
     "javascript",
-    "typescript"
+    "typescript",
+    "iban",
+    "turkish-iban"
   ],
   "author": {
     "name": "emrullahctrl",
@@ -48,6 +52,7 @@
   "homepage": "https://github.com/emrullahctrl/dogrula-js#readme",
   "devDependencies": {
     "tsx": "^4.23.12",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.11"
   }
 }

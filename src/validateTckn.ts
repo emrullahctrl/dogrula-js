@@ -1,4 +1,21 @@
-import { ValidationResult } from "./types.js";
+type TCKNErrorCode =
+    | "INVALID_TYPE"
+    | "EMPTY_VALUE"
+    | "INVALID_CHARACTERS"
+    | "INVALID_LENGTH"
+    | "INVALID_FIRST_DIGIT"
+    | "INVALID_CHECKSUM_10"
+    | "INVALID_CHECKSUM_11";
+
+type ValidationResult =
+    | {
+        valid: true;
+    }
+    | {
+        valid: false;
+        code: TCKNErrorCode;
+        expected_type?: "string"
+    };
 
 export default function validateTCKN(value: string): ValidationResult {
     const digitsOnlyRegex = /^[0-9]+$/;
@@ -8,7 +25,7 @@ export default function validateTCKN(value: string): ValidationResult {
             valid: false,
             code: "INVALID_TYPE",
             expected_type: "string",
-        }
+        }   
     }
     const tckn = value.trim();
 
@@ -55,19 +72,18 @@ export default function validateTCKN(value: string): ValidationResult {
     if (expectedTenthDigit !== digits[9]) {
         return {
             valid: false,
-            code: "INVALID_CHECKSUM",
+            code: "INVALID_CHECKSUM_10",
         }
     }
 
     if (expectedEleventhDigit !== digits[10]) {
         return {
             valid: false,
-            code: "INVALID_CHECKSUM",
+            code: "INVALID_CHECKSUM_11",
         }
     }
 
     return {
-        valid: true,
-        code: "VALID",
+        valid: true
     }
 }
